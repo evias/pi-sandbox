@@ -44,7 +44,7 @@ def date_lights(pins):
     light_leds(pins, light_idx)
 
 def light_leds(pins, indexes):
-    print("Indexes: %s" % indexes)
+    #print("Indexes: %s" % indexes)
     for idx in indexes:
         led = pins[idx]
         gpio.output(led, 1)
@@ -58,7 +58,7 @@ def watch_date_change(pins):
     current_date = datetime.datetime.fromtimestamp(time.time())
     current_day = str(current_date)[8:10]
     if current_day != day:
-        print("Date changed!")
+        #print("Date changed!")
         shutdown_lights(pins)
         date_lights(pins)
 
@@ -75,7 +75,7 @@ ledRow6 = 26
 ledRow7 = 20
 ledRow8 = 21
 
-print("Setting up device..")
+#print("Setting up device..")
 
 # configure button input
 gpio.setup(closeButton, gpio.IN, pull_up_down=gpio.PUD_UP)
@@ -90,7 +90,7 @@ gpio.setup(ledRow6, gpio.OUT)
 gpio.setup(ledRow7, gpio.OUT)
 gpio.setup(ledRow8, gpio.OUT)
 
-print("Starting action loop..")
+#print("Starting action loop..")
 
 count = 0
 try:
@@ -110,7 +110,7 @@ try:
             watch_date_change(light_pins)
 
         if count % 500000 == 0:
-            print("Watching date changes..")
+            #print("Watching date changes..")
             count = 1
 
         count += 1
